@@ -37,7 +37,7 @@ export const Features = () => {
               key={index}
               className="bg-card rounded-2xl p-8 shadow-elegant hover:shadow-glow transition-smooth group"
             >
-              <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth">
+              <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth">
                 <feature.icon className="w-8 h-8 text-accent-foreground" />
               </div>
               <h3 className="text-2xl font-semibold text-card-foreground mb-4">
