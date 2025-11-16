@@ -7,7 +7,7 @@ const Index = () => {
       <Hero />
       <Features />
       <HowItWorks />
-      <Footer className="bg-zinc-800" />
+      <Footer />
     </div>;
 };
 export default Index;
