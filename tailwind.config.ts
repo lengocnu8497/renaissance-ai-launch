@@ -61,7 +61,12 @@ export default {
         'smooth': 'var(--transition-smooth)',
       },
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'],
+        'sans': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'serif': ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+      },
+      letterSpacing: {
+        'wider': '0.05em',
+        'widest': '0.1em',
       },
       borderRadius: {
         lg: "var(--radius)",
