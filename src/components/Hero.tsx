@@ -48,6 +48,14 @@ export const Hero = () => {
       backgroundPosition: 'center'
     }}>
         <div className="absolute inset-0 bg-gradient-hero opacity-70" />
+        
+        {/* Animated Wave Overlays */}
+        <svg className="absolute bottom-0 left-0 w-full h-64 opacity-30" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,50 C300,80 600,20 900,50 C1100,70 1200,50 1200,50 L1200,120 L0,120 Z" fill="hsl(var(--primary))" className="animate-wave" />
+        </svg>
+        <svg className="absolute bottom-0 left-0 w-full h-64 opacity-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,70 C300,40 600,90 900,60 C1100,40 1200,60 1200,60 L1200,120 L0,120 Z" fill="hsl(var(--primary))" className="animate-wave-slow" />
+        </svg>
       </div>
 
       {/* Content */}
