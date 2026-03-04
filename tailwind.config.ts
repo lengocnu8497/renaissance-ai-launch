@@ -14,6 +14,14 @@ export default {
     },
     extend: {
       colors: {
+        'charcoal-rose': '#3D2B2E',
+        'mauve-berry':   '#8E4C5C',
+        'dusty-rose':    '#C4929A',
+        'rose-gold':     '#B76E79',
+        'soft-blush':    '#F2D7DB',
+        'cream':         '#FFF8F6',
+        'warm-gray':     '#B8A9AB',
+        'pale-pink':     '#FAF0F0',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -61,8 +69,8 @@ export default {
         'smooth': 'var(--transition-smooth)',
       },
       fontFamily: {
-        'sans': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        'serif': ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        'sans': ['Outfit', 'system-ui', 'sans-serif'],
+        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       letterSpacing: {
         'wider': '0.05em',

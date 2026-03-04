@@ -1,30 +1,26 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/hero-image.jpg";
+
+const HERO_VIDEO = "/resources/u8193442918_a_web_design_hero_section_with_the_close_up_image_2398b575-514a-41c9-8812-a3aa35751bb2_0.mp4";
+
 export const Hero = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     const trimmedEmail = email.trim();
     if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
       toast.error("Please enter a valid email address");
       return;
     }
-
     setIsSubmitting(true);
-
     try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([{ email: trimmedEmail }]);
-
+      const { error } = await supabase.from("waitlist").insert([{ email: trimmedEmail }]);
       if (error) {
-        if (error.code === '23505') {
+        if (error.code === "23505") {
           toast.error("You're already on the waitlist!");
         } else {
           throw error;
@@ -33,63 +29,97 @@ export const Hero = () => {
         toast.success("You're on the waitlist! We'll be in touch soon.");
         setEmail("");
       }
-    } catch (error) {
-      console.error('Error joining waitlist:', error);
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0" style={{
-      backgroundImage: `url(${heroImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
-        <div className="absolute inset-0 bg-gradient-hero opacity-70" />
-        
-        {/* Animated Wave Overlays */}
-        <svg className="absolute bottom-0 left-0 w-full h-64 opacity-30" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,50 C300,80 600,20 900,50 C1100,70 1200,50 1200,50 L1200,120 L0,120 Z" fill="hsl(var(--primary))" className="animate-wave" />
-        </svg>
-        <svg className="absolute bottom-0 left-0 w-full h-64 opacity-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,70 C300,40 600,90 900,60 C1100,40 1200,60 1200,60 L1200,120 L0,120 Z" fill="hsl(var(--primary))" className="animate-wave-slow" />
-        </svg>
+
+  return (
+    <section id="top" className="relative h-screen overflow-hidden">
+      {/* Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        src={HERO_VIDEO}
+      />
+
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(61,43,46,0.5) 0%, rgba(61,43,46,0.08) 45%, rgba(61,43,46,0.55) 100%)",
+        }}
+      />
+
+      {/* Content — bottom-left anchored */}
+      <div className="absolute inset-0 flex flex-col justify-end pb-28 md:pb-32 px-8 md:px-16">
+        <motion.h1
+          initial={{ opacity: 0, y: 48 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-serif font-light leading-[1.05] text-cream mb-5 max-w-3xl"
+          style={{ fontSize: "clamp(44px, 7.5vw, 96px)" }}
+        >
+          Beauty, guided<br />by intelligence.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-sans font-light text-cream/65 mb-10 max-w-sm"
+          style={{ fontSize: "15px", lineHeight: "1.8" }}
+        >
+          Your AI concierge for cosmetic care — personalized, trusted, effortless.
+        </motion.p>
+
+        <motion.form
+          id="waitlist"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-3 max-w-md"
+        >
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            disabled={isSubmitting}
+            className="flex-1 bg-cream/10 backdrop-blur-sm border border-cream/30 text-cream placeholder:text-cream/40 rounded-full px-5 py-3 text-[14px] font-light outline-none focus:border-cream/60 transition-colors"
+          />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-dusty-rose text-cream rounded-full px-7 py-3 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:bg-rose-gold disabled:opacity-60 whitespace-nowrap"
+          >
+            {isSubmitting ? "Joining..." : "Join Waitlist"}
+          </button>
+        </motion.form>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-cream/35 mt-4 font-light"
+          style={{ fontSize: "12px", letterSpacing: "0.5px" }}
+        >
+          Be the first to experience the future of aesthetic care
+        </motion.p>
       </div>
 
-      {/* Content */}
-      <div className="container relative z-10 px-4 py-20 mx-auto">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-primary-foreground leading-tight">
-            Your Personal Guide to
-            <span className="block bg-gradient-accent bg-clip-text text-transparent">
-              Beauty & Confidence
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Renaissance is your AI-powered concierge for cosmetic procedures. Get personalized recommendations, trusted provider matches, and expert guidance—all in one place.
-          </p>
-
-          {/* Email Signup Form */}
-          <div className="max-w-md mx-auto">
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <Input type="email" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} className="flex-1 bg-background/90 backdrop-blur-sm border-border text-foreground placeholder:text-muted-foreground h-12 text-base" disabled={isSubmitting} />
-              <Button type="submit" size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 px-8 shadow-glow transition-smooth" disabled={isSubmitting}>
-                {isSubmitting ? "Joining..." : "Join Waitlist"}
-              </Button>
-            </form>
-            <p className="text-sm text-primary-foreground/70 mt-4">
-              Be the first to experience the future of cosmetic care
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        
-      </div>
-    </section>;
+      {/* Bottom blend → Soft Blush */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #F2D7DB)" }}
+      />
+    </section>
+  );
 };

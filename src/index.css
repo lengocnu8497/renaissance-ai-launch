@@ -2,115 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 15 100% 98%;        /* Cream #FFF8F6 */
+    --foreground: 350 17% 20%;        /* Charcoal Rose #3D2B2E */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 350 17% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 350 17% 20%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 349 26% 58%;           /* Dusty Rose #C4929A */
+    --primary-foreground: 15 100% 98%;
 
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 345 30% 42%;         /* Mauve Berry #8E4C5C */
+    --secondary-foreground: 15 100% 98%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 352 43% 91%;             /* Soft Blush #F2D7DB */
+    --muted-foreground: 345 8% 69%;   /* Warm Gray #B8A9AB */
 
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 347 33% 57%;            /* Rose Gold #B76E79 */
+    --accent-foreground: 15 100% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 10%;
+    --border: 352 30% 85%;
+    --input: 352 30% 85%;
+    --ring: 349 26% 58%;
 
-    --radius: 0rem;
+    --radius: 1.25rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 10% / 0.6) 0%, hsl(0 0% 20% / 0.4) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(0 0% 10%) 0%, hsl(0 0% 20%) 100%);
-    
-    --shadow-elegant: 0 2px 10px -2px hsl(0 0% 0% / 0.1);
-    --shadow-glow: 0 0 30px hsl(0 0% 0% / 0.05);
-    
+    --gradient-hero: linear-gradient(160deg, rgba(61,43,46,0.6) 0%, rgba(61,43,46,0.15) 50%, rgba(61,43,46,0.55) 100%);
+    --gradient-subtle: linear-gradient(180deg, #FFF8F6 0%, #F2D7DB 100%);
+    --gradient-accent: linear-gradient(135deg, #C4929A 0%, #8E4C5C 100%);
+
+    --shadow-elegant: 0 2px 20px -4px rgba(61,43,46,0.08);
+    --shadow-glow: 0 0 40px rgba(196,146,154,0.15);
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 15%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 15%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 10%;
-
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
-
-    --accent: 0 0% 25%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 98%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Outfit', system-ui, sans-serif;
+    background-color: #FFF8F6;
+    color: #3D2B2E;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  @keyframes wave {
-    0%, 100% {
-      transform: translateX(0) translateY(0);
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
     }
-    50% {
-      transform: translateX(-25px) translateY(-10px);
-    }
-  }
-
-  @keyframes wave-slow {
-    0%, 100% {
-      transform: translateX(0) translateY(0);
-    }
-    50% {
-      transform: translateX(25px) translateY(-8px);
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  .animate-wave {
-    animation: wave 8s ease-in-out infinite;
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .animate-wave-slow {
-    animation: wave-slow 12s ease-in-out infinite;
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
   }
 }
