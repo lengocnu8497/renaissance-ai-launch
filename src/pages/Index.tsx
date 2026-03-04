@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { StatSection } from "@/components/StatSection";
 import { VideoSection } from "@/components/VideoSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
@@ -12,7 +13,7 @@ const SECTIONS = [
     textSide: "right" as const,
     eyebrow: "Your Uniqueness",
     heading: "Youth meets individuality.",
-    body: "Placeholder — update with final copy that celebrates patient uniqueness and the beauty of every age.",
+    body: "You represent a history — your environment, your hormones, your habits, your genetics. Rena learns all of it, so every recommendation is built for you specifically, not someone who answered a quiz the same way you did.",
   },
   {
     src: "/resources/u8193442918_the_hand_gently_massage_the_woman_face_warm_light_1d1cf52e-e114-4324-84a3-45a160064812_0.mp4",
@@ -21,7 +22,7 @@ const SECTIONS = [
     textSide: "left" as const,
     eyebrow: "Aesthetic Wellness",
     heading: "Aesthetic care is self-care.",
-    body: "Placeholder — update with final copy about prioritizing wellness and how aesthetic health is a form of health.",
+    body: "Beauty isn't separate from how you feel. When you are taken care of the right way, it shows — not just on the surface. Rena is built around that idea: that looking like yourself, at your best, is its own kind of wellness.",
   },
 ];
 
@@ -30,6 +31,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <StatSection />
       {SECTIONS.map((section, i) => (
         <VideoSection key={i} {...section} />
       ))}

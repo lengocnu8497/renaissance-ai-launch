@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
   return (
     <footer
-      className="flex flex-col items-center justify-center gap-5 py-14 px-8"
+      className="flex flex-col items-center justify-center gap-6 py-14 px-8"
       style={{ backgroundColor: "#3D2B2E" }}
     >
       <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,11 +12,30 @@ export const Footer = () => {
         <circle cx="20" cy="20" r="7" stroke="rgba(196,146,154,0.5)" strokeWidth="1" fill="none"/>
         <circle cx="20" cy="20" r="2" fill="rgba(196,146,154,0.6)"/>
       </svg>
+
+      <div className="flex items-center gap-6">
+        <Link
+          to="/privacy-policy"
+          className="font-sans font-light transition-opacity hover:opacity-70"
+          style={{ fontSize: "12px", color: "rgba(255,248,246,0.45)", letterSpacing: "1px" }}
+        >
+          Privacy Policy
+        </Link>
+        <span style={{ width: "1px", height: "12px", backgroundColor: "rgba(255,248,246,0.2)", display: "inline-block" }} />
+        <Link
+          to="/terms-of-service"
+          className="font-sans font-light transition-opacity hover:opacity-70"
+          style={{ fontSize: "12px", color: "rgba(255,248,246,0.45)", letterSpacing: "1px" }}
+        >
+          Terms of Service
+        </Link>
+      </div>
+
       <p
         className="font-sans font-light text-center"
-        style={{ fontSize: "12px", color: "rgba(255,248,246,0.35)", letterSpacing: "1px" }}
+        style={{ fontSize: "12px", color: "rgba(255,248,246,0.25)", letterSpacing: "1px" }}
       >
-        © 2025 Rena Aesthetic Lab. All rights reserved.
+        © 2026 Rena Aesthetic Lab. All rights reserved.
       </p>
     </footer>
   );

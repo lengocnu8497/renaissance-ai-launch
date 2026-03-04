@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const LogoDark = () => (
-  <svg width="180" height="48" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="240" height="64" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="28" stroke="#C4929A" strokeWidth="1.2" fill="none"/>
     <circle cx="30" cy="30" r="20" stroke="#C4929A" strokeWidth="1" fill="none"/>
     <circle cx="30" cy="30" r="12" stroke="#F2D7DB" strokeWidth="1.2" fill="none"/>
@@ -13,7 +13,7 @@ const LogoDark = () => (
 );
 
 const LogoLight = () => (
-  <svg width="180" height="48" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="240" height="64" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30" cy="30" r="28" stroke="#C4929A" strokeWidth="1.2" fill="none"/>
     <circle cx="30" cy="30" r="20" stroke="#C4929A" strokeWidth="1" fill="none"/>
     <circle cx="30" cy="30" r="12" stroke="#8E4C5C" strokeWidth="1.2" fill="none"/>
