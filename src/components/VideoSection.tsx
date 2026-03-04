@@ -27,7 +27,7 @@ export const VideoSection = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative overflow-hidden rounded-[20px]"
+      className="relative overflow-hidden"
       style={{
         aspectRatio: "3/4",
         transform: `skewY(${videoLeft ? "-1deg" : "1deg"})`,
@@ -89,11 +89,7 @@ export const VideoSection = ({
       style={{ backgroundColor: bg }}
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16">
-        <div
-          className={`grid md:grid-cols-2 gap-12 md:gap-24 items-center ${
-            videoLeft ? "" : "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1"
-          }`}
-        >
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
           {videoLeft ? videoCol : textCol}
           {videoLeft ? textCol : videoCol}
         </div>

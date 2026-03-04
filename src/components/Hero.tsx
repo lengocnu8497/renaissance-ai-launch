@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-const HERO_VIDEO = "/resources/u8193442918_a_web_design_hero_section_with_the_close_up_image_2398b575-514a-41c9-8812-a3aa35751bb2_0.mp4";
+const HERO_VIDEO = "/resources/hero-video.mp4";
 
 export const Hero = () => {
   const [email, setEmail] = useState("");
@@ -74,7 +74,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="font-sans font-light text-cream/65 mb-10 max-w-sm"
-          style={{ fontSize: "15px", lineHeight: "1.8" }}
+          style={{ fontSize: "18px", lineHeight: "1.8" }}
         >
           Your AI concierge for cosmetic care — personalized, trusted, effortless.
         </motion.p>
@@ -108,8 +108,8 @@ export const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-cream/35 mt-4 font-light"
-          style={{ fontSize: "12px", letterSpacing: "0.5px" }}
+          className="text-cream/50 mt-4 font-light"
+          style={{ fontSize: "15px", letterSpacing: "0.5px" }}
         >
           Be the first to experience the future of aesthetic care
         </motion.p>
@@ -117,7 +117,7 @@ export const Hero = () => {
 
       {/* Bottom blend → Soft Blush */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent, #F2D7DB)" }}
       />
     </section>
