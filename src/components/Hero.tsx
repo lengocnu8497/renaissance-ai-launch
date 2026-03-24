@@ -80,7 +80,6 @@ export const Hero = () => {
         </motion.p>
 
         <motion.form
-          id="waitlist"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -111,15 +110,33 @@ export const Hero = () => {
           className="text-cream/50 mt-4 font-light"
           style={{ fontSize: "15px", letterSpacing: "0.5px" }}
         >
-          Be the first to experience the future of aesthetic care
+          No algorithms. Every recommendation is built for you, specifically.
         </motion.p>
+
       </div>
 
-      {/* Bottom blend → Soft Blush */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, #F2D7DB)" }}
-      />
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+      >
+        <span
+          className="font-sans font-light text-cream/40 uppercase"
+          style={{ fontSize: "9px", letterSpacing: "3.5px" }}
+        >
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+            <path d="M1 1l7 7 7-7" stroke="rgba(255,248,246,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

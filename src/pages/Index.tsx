@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { StatSection } from "@/components/StatSection";
+import { AppShowcase } from "@/components/AppShowcase";
+import { HowItWorks } from "@/components/HowItWorks";
 import { VideoSection } from "@/components/VideoSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
@@ -18,7 +20,6 @@ const SECTIONS = [
   {
     src: "/resources/u8193442918_the_hand_gently_massage_the_woman_face_warm_light_1d1cf52e-e114-4324-84a3-45a160064812_0.mp4",
     bg: "#FFF8F6",
-    blendTo: "#3D2B2E",
     textSide: "left" as const,
     eyebrow: "Aesthetic Wellness",
     heading: "Aesthetic care is self-care.",
@@ -31,10 +32,11 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <AppShowcase />
+      <HowItWorks />
+      <VideoSection {...SECTIONS[0]} />
       <StatSection />
-      {SECTIONS.map((section, i) => (
-        <VideoSection key={i} {...section} />
-      ))}
+      <VideoSection {...SECTIONS[1]} />
       <FinalCTA />
       <Footer />
     </div>

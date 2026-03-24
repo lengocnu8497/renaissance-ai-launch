@@ -20,7 +20,7 @@ export const StatSection = () => {
   return (
     <section
       ref={ref}
-      className="py-28 md:py-40 text-center"
+      className="relative py-28 md:py-40 text-center"
       style={{ backgroundColor: "#F2D7DB" }}
     >
       <div className="max-w-2xl mx-auto px-8">
@@ -70,6 +70,12 @@ export const StatSection = () => {
         </motion.p>
 
       </div>
+
+      {/* Gradient blend → cream (VideoSection bg) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #FFF8F6)" }}
+      />
     </section>
   );
 };

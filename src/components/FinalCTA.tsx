@@ -3,17 +3,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-const CTA_IMAGE = "/resources/Gemini_Generated_Image_ytwn3wytwn3wytwn.png";
 
-const LogoMark = () => (
-  <svg width="72" height="72" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="40" cy="40" r="37" stroke="rgba(196,146,154,0.6)" strokeWidth="1" fill="none"/>
-    <circle cx="40" cy="40" r="27" stroke="rgba(196,146,154,0.5)" strokeWidth="1" fill="none"/>
-    <circle cx="40" cy="40" r="17" stroke="#C4929A" strokeWidth="1.2" fill="none"/>
-    <path d="M40 26 C50 26,57 32,57 40 C57 48,50 54,40 54" stroke="rgba(196,146,154,0.6)" strokeWidth="1" fill="none" strokeLinecap="round"/>
-    <circle cx="40" cy="40" r="4" fill="#C4929A"/>
-  </svg>
-);
 
 export const FinalCTA = () => {
   const [email, setEmail] = useState("");
@@ -47,63 +37,67 @@ export const FinalCTA = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <img
-        src={CTA_IMAGE}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+    <section
+      id="waitlist"
+      className="relative flex items-center justify-center overflow-hidden py-24 md:py-32"
+      style={{ backgroundColor: "#3D2B2E", scrollMarginTop: "80px" }}
+    >
+      <div className="relative z-10 flex flex-col items-center text-center px-8 max-w-xl mx-auto">
 
-      {/* Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(160deg, rgba(61,43,46,0.82) 0%, rgba(61,43,46,0.6) 100%)",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-8 max-w-2xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-8"
-        >
-          <LogoMark />
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 32 }}
+        {/* Eyebrow — sets context first */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-serif font-light text-cream leading-[1.05] mb-3"
-          style={{ fontSize: "clamp(42px, 7vw, 80px)" }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-sans font-medium uppercase mb-3"
+          style={{ fontSize: "10px", letterSpacing: "4px", color: "rgba(196,146,154,0.55)" }}
         >
-          Rena Aesthetic Lab
-        </motion.h2>
+          Founding Member Offer
+        </motion.p>
 
+        {/* 20% off — the anchor, size does the heavy lifting */}
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-serif text-cream leading-none mb-4"
+          style={{ fontSize: "clamp(72px, 13vw, 108px)", fontWeight: 300 }}
+        >
+          20% off
+        </motion.p>
+
+        {/* Emotional close — lighter, supporting */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-cream/40 font-medium uppercase mb-14"
-          style={{ fontSize: "10px", letterSpacing: "7px" }}
+          transition={{ duration: 0.9, delay: 0.35 }}
+          className="font-serif italic mb-10"
+          style={{ fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 300, color: "rgba(255,248,246,0.45)" }}
         >
-          Coming Soon
+          This is your invitation.
         </motion.p>
 
+        {/* Thin divider */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mb-10"
+          style={{ width: 48, height: 1, background: "rgba(196,146,154,0.3)" }}
+        />
+
+        {/* Form */}
         <motion.form
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           onSubmit={handleSubmit}
-          className="flex flex-col sm:flex-row gap-3 w-full max-w-sm"
+          className="flex flex-col sm:flex-row gap-3 w-full max-w-sm mb-10"
         >
           <input
             type="email"
@@ -122,16 +116,26 @@ export const FinalCTA = () => {
           </button>
         </motion.form>
 
-        <motion.p
+        {/* Launch badge — footnote, not headline */}
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-cream/30 mt-6 font-light"
-          style={{ fontSize: "12px" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, delay: 0.65 }}
         >
-          Be the first to experience the future of aesthetic care
-        </motion.p>
+          <span
+            className="font-sans font-medium uppercase px-4 py-1.5 rounded-full inline-block"
+            style={{
+              fontSize: "10px",
+              letterSpacing: "3px",
+              color: "rgba(196,146,154,0.5)",
+              border: "1px solid rgba(196,146,154,0.2)",
+            }}
+          >
+            Launching iOS · Summer 2026
+          </span>
+        </motion.div>
+
       </div>
     </section>
   );

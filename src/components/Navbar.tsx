@@ -46,26 +46,55 @@ export const Navbar = () => {
     >
       <a href="#top">{scrolled ? <LogoLight /> : <LogoDark />}</a>
 
-      <a
-        href="#waitlist"
-        className="text-[11px] font-medium uppercase tracking-[3px] px-6 py-2.5 rounded-full border transition-all duration-300"
-        style={{
-          color: scrolled ? "#3D2B2E" : "#FFF8F6",
-          borderColor: scrolled ? "rgba(61,43,46,0.4)" : "rgba(255,248,246,0.5)",
-        }}
-        onMouseEnter={e => {
-          const el = e.currentTarget;
-          el.style.backgroundColor = scrolled ? "#3D2B2E" : "rgba(255,248,246,0.15)";
-          el.style.color = scrolled ? "#FFF8F6" : "#FFF8F6";
-        }}
-        onMouseLeave={e => {
-          const el = e.currentTarget;
-          el.style.backgroundColor = "transparent";
-          el.style.color = scrolled ? "#3D2B2E" : "#FFF8F6";
-        }}
-      >
-        Join Waitlist
-      </a>
+      <div className="flex items-center gap-8">
+        {/* Section links — desktop only */}
+        <div className="hidden md:flex items-center gap-7">
+          {[
+            { label: "The App", href: "#the-app" },
+            { label: "How It Works", href: "#how-it-works" },
+          ].map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className="font-sans font-light transition-colors duration-300"
+              style={{
+                fontSize: "17px",
+                letterSpacing: "0.5px",
+                color: scrolled ? "rgba(61,43,46,0.6)" : "rgba(255,248,246,0.55)",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.color = scrolled ? "#3D2B2E" : "#FFF8F6";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.color = scrolled ? "rgba(61,43,46,0.6)" : "rgba(255,248,246,0.55)";
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="#waitlist"
+          className="text-[11px] font-medium uppercase tracking-[3px] px-6 py-2.5 rounded-full border transition-all duration-300"
+          style={{
+            color: scrolled ? "#3D2B2E" : "#FFF8F6",
+            borderColor: scrolled ? "rgba(61,43,46,0.4)" : "rgba(255,248,246,0.5)",
+          }}
+          onMouseEnter={e => {
+            const el = e.currentTarget;
+            el.style.backgroundColor = scrolled ? "#3D2B2E" : "rgba(255,248,246,0.15)";
+            el.style.color = "#FFF8F6";
+          }}
+          onMouseLeave={e => {
+            const el = e.currentTarget;
+            el.style.backgroundColor = "transparent";
+            el.style.color = scrolled ? "#3D2B2E" : "#FFF8F6";
+          }}
+        >
+          Join Waitlist
+        </a>
+      </div>
     </nav>
   );
 };
