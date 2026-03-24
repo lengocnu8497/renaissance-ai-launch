@@ -63,8 +63,8 @@ export const VideoSection = ({
       )}
 
       <h2
-        className="font-serif font-light text-charcoal-rose leading-[1.1]"
-        style={{ fontSize: "clamp(30px, 3.5vw, 52px)" }}
+        className="font-serif text-charcoal-rose leading-[1.1]"
+        style={{ fontSize: "clamp(32px, 4vw, 58px)", fontWeight: 400 }}
       >
         {heading}
       </h2>
