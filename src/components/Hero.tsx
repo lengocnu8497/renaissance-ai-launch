@@ -64,7 +64,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="font-serif font-light leading-[1.05] text-cream mb-5 max-w-3xl"
-          style={{ fontSize: "clamp(44px, 7.5vw, 96px)" }}
+          style={{ fontSize: "clamp(38px, 6vw, 76px)" }}
         >
           Beauty, guided<br />by intelligence.
         </motion.h1>
@@ -76,7 +76,7 @@ export const Hero = () => {
           className="font-sans font-light text-cream/65 mb-10 max-w-sm"
           style={{ fontSize: "18px", lineHeight: "1.8" }}
         >
-          Your AI concierge for cosmetic care — personalized, trusted, effortless.
+          Your AI guide for cosmetic surgery — research, recovery, and everything in between.
         </motion.p>
 
         {/* Primary CTA */}

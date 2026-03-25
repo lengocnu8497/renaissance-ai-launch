@@ -22,7 +22,7 @@ const SECTIONS = [
     textSide: "right" as const,
     eyebrow: "Your Uniqueness",
     heading: "No two people are the same.",
-    body: "You represent a history — your environment, your hormones, your habits, your genetics. Rena learns all of it, so every recommendation is built for you specifically, not someone who answered a quiz the same way you did.",
+    body: "You represent a history — your environment, your hormones, your habits, your genetics. Rena learns all of it, so every recommendation — whether you're exploring rhinoplasty, a facelift, or blepharoplasty — is built for you specifically, not someone who answered a quiz the same way you did.",
   },
   {
     src: "/resources/u8193442918_the_hand_gently_massage_the_woman_face_warm_light_1d1cf52e-e114-4324-84a3-45a160064812_0.mp4",
@@ -30,7 +30,7 @@ const SECTIONS = [
     textSide: "left" as const,
     eyebrow: "Aesthetic Wellness",
     heading: "Aesthetic care is self-care.",
-    body: "Beauty isn't separate from how you feel. When you are taken care of the right way, it shows — not just on the surface. Rena is built around that idea: that looking like yourself, at your best, is its own kind of wellness.",
+    body: "Beauty isn't separate from how you feel. Choosing a neck lift, brow lift, or any surgical procedure is a deeply personal decision — and when it goes right, it shows in more than just the mirror. Rena is built around that idea: that looking like yourself, at your best, is its own kind of wellness.",
   },
 ];
 
