@@ -9,7 +9,7 @@ const PLANS = [
   {
     key: "silver",
     name: "Silver",
-    description: "Intelligence for everyday aesthetic health queries",
+    description: "AI-guided research for cosmetic procedures and aesthetic treatments",
     regularPrice: "$19.99",
     foundingPrice: "$15.99",
     interval: "/month",
@@ -23,7 +23,7 @@ const PLANS = [
   {
     key: "gold",
     name: "Gold",
-    description: "Advanced and personalized aesthetic intelligence",
+    description: "Personalized guidance for rhinoplasty, facelifts, and complex cosmetic surgery decisions",
     regularPrice: "$29.99",
     foundingPrice: "$23.99",
     interval: "/month",

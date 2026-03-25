@@ -3,12 +3,20 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const FAQS = [
   {
+    q: "What procedures does Rena cover?",
+    a: "Rena is built around the full spectrum of cosmetic and plastic surgery — rhinoplasty, facelifts, blepharoplasty, neck lifts, breast augmentation, tummy tucks, liposuction, and more. If you're researching or recovering from a cosmetic procedure, Rena is built for that.",
+  },
+  {
+    q: "Can Rena help with plastic surgery recovery?",
+    a: "Yes — recovery support is one of Rena's core features. Whether you're tracking swelling after rhinoplasty, logging daily progress post-facelift, or trying to understand what's normal week by week, Rena gives you a structured way to document and interpret your recovery.",
+  },
+  {
     q: "Is this medical advice?",
     a: "Rena is not a doctor and does not provide medical diagnoses or prescriptions. She's your personal research companion — helping you understand procedures, ask better questions, and track your recovery with more confidence. Always consult a licensed medical professional before making any treatment decisions.",
   },
   {
     q: "How does Rena personalize for me?",
-    a: "When you first open the app, Rena learns about your body, your skin, your goals, your history, and your lifestyle. Every recommendation, insight, and recovery note is built from that profile — not a generic template. The more you use Rena, the more accurate she becomes.",
+    a: "When you first open the app, Rena learns about your body, your skin, your goals, your history, and your lifestyle. Whether you're considering rhinoplasty, a facelift, blepharoplasty, or any other procedure — every recommendation, insight, and recovery note is built from that profile, not a generic template. The more you use Rena, the more accurate she becomes.",
   },
   {
     q: "What happens after I pay?",

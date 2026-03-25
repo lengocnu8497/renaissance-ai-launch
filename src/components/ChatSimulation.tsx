@@ -29,7 +29,7 @@ const MESSAGES = [
   },
   {
     from: "rena",
-    text: "That uncertainty is one of the hardest parts of recovery — and it's something most people feel but no one talks about.",
+    text: "The uncertainty you're feeling is a part of recovery, and it's something most people feel but rarely brought up in discussion.",
     delay: 0.5,
   },
   {

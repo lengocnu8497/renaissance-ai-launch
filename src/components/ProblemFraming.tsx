@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const PROBLEMS = [
   {
     headline: "Months of research. Still no clarity.",
-    body: "You've read every forum thread, watched every before-and-after, and still don't know if that procedure is actually right for you — or just right for someone else.",
+    body: "You've read every forum thread, watched every rhinoplasty and facelift before-and-after, and still don't know if that procedure is actually right for you — or just right for someone else.",
   },
   {
     headline: "You had the procedure. Now you're on your own.",

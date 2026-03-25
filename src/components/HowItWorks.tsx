@@ -9,12 +9,12 @@ const STEPS = [
   {
     number: "02",
     heading: "Get your personalized plan.",
-    body: "Rena analyzes everything and surfaces the procedures, products, and providers best suited to you specifically — not the average person who answered similarly.",
+    body: "Rena analyzes everything and surfaces the right procedures — rhinoplasty consultants, facelift specialists, blepharoplasty providers — matched to your profile specifically, not the average person who answered similarly.",
   },
   {
     number: "03",
     heading: "Stay informed, always.",
-    body: "Ask anything. Get answers backed by clinical knowledge, tailored to your profile, at any stage of your aesthetic journey — before, during, and after.",
+    body: "Ask anything. Whether you're researching rhinoplasty recovery timelines or preparing for a facelift consultation — get answers backed by clinical knowledge, tailored to your profile, at every stage.",
   },
 ];
 
@@ -44,7 +44,7 @@ export const HowItWorks = () => (
           className="font-serif leading-tight"
           style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 400, color: "#3D2B2E", maxWidth: "520px" }}
         >
-          Aesthetic care,<br />finally built around you.
+          Aesthetic procedures,<br />finally built around you.
         </h2>
       </motion.div>
 

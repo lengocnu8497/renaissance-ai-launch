@@ -281,7 +281,7 @@ export const AppShowcase = () => (
           className="font-sans font-medium uppercase text-dusty-rose"
           style={{ fontSize:"11px", letterSpacing:"4px" }}
         >
-          The App
+          The Cosmetic Surgery App
         </motion.span>
         <motion.h2
           initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}

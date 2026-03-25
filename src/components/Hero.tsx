@@ -76,7 +76,7 @@ export const Hero = () => {
           className="font-sans font-light text-cream/65 mb-10 max-w-sm"
           style={{ fontSize: "18px", lineHeight: "1.8" }}
         >
-          Your AI concierge for cosmetic care — personalized, trusted, effortless.
+          Your AI guide for cosmetic surgery — research, recovery, and everything in between.
         </motion.p>
 
         {/* Primary CTA */}
