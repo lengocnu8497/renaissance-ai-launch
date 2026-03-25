@@ -90,12 +90,47 @@ export const FinalCTA = () => {
           style={{ width: 48, height: 1, background: "rgba(196,146,154,0.3)" }}
         />
 
-        {/* Form */}
+        {/* Pre-order primary CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.9, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-4 w-full max-w-sm"
+        >
+          <a
+            href="#pricing"
+            className="flex items-center justify-center w-full rounded-full py-4 font-sans font-medium uppercase transition-all duration-200 hover:opacity-90"
+            style={{ fontSize: "11px", letterSpacing: "3px", backgroundColor: "#C4929A", color: "#FFF8F6" }}
+          >
+            Pre-order — 20% off
+          </a>
+          <p
+            className="font-sans font-light text-center mt-2"
+            style={{ fontSize: "11px", color: "rgba(255,248,246,0.35)" }}
+          >
+            Lock in founding pricing · Cancel anytime
+          </p>
+        </motion.div>
+
+        {/* Waitlist fallback */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="font-sans font-light mb-4"
+          style={{ fontSize: "12px", color: "rgba(255,248,246,0.3)", letterSpacing: "0.3px" }}
+        >
+          Can't commit yet? Join the waitlist for launch updates.
+        </motion.p>
+
+        {/* Waitlist form — secondary */}
         <motion.form
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.9, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
           onSubmit={handleSubmit}
           className="flex flex-col sm:flex-row gap-3 w-full max-w-sm mb-10"
         >
@@ -110,7 +145,7 @@ export const FinalCTA = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-dusty-rose text-cream rounded-full px-7 py-3 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:bg-rose-gold disabled:opacity-60 whitespace-nowrap"
+            className="bg-transparent border border-cream/25 text-cream/60 rounded-full px-7 py-3 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:border-cream/50 hover:text-cream/80 disabled:opacity-60 whitespace-nowrap"
           >
             {isSubmitting ? "Joining..." : "Join Waitlist"}
           </button>
