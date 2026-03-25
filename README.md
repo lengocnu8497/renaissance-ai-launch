@@ -1,73 +1,159 @@
-# Welcome to your Lovable project
+# Rena Aesthetic Lab — Launch Site
 
-## Project info
+Waitlist and pre-order landing page for [Rena Aesthetic Lab](https://renaesthetic.com), an AI-powered cosmetic procedure concierge. Collecting founding member pre-orders at 20% off — payment is charged immediately at checkout, no trial period.
 
-**URL**: https://lovable.dev/projects/a2f0f482-db28-494e-a3e0-4c2abadfc492
+## Stack
 
-## How can I edit this code?
+- **Frontend** — Vite + React 18 + TypeScript + Tailwind CSS + shadcn/ui + Framer Motion
+- **Backend** — Supabase (Postgres + Edge Functions)
+- **Payments** — Stripe Checkout (subscription mode, immediate charge, no trial)
+- **Testing** — Vitest + React Testing Library (components), Deno test (edge functions)
 
-There are several ways of editing your application.
+## Prerequisites
 
-**Use Lovable**
+- Node.js 18+ and npm
+- [Deno](https://deno.land) (for edge function tests only) — `brew install deno`
+- [Supabase CLI](https://supabase.com/docs/guides/cli) (for deploying edge functions) — `brew install supabase/tap/supabase`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a2f0f482-db28-494e-a3e0-4c2abadfc492) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Copy env vars (fill in your Supabase credentials)
+cp .env.example .env
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Start the dev server
 npm run dev
+# → http://localhost:5173
 ```
 
-**Edit a file directly in GitHub**
+### Environment variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Variable | Description |
+|---|---|
+| `VITE_SUPABASE_URL` | Your Supabase project URL |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase anon/publishable key |
 
-**Use GitHub Codespaces**
+The `STRIPE_SECRET_KEY` lives as a Supabase Edge Function secret — it is **never** in `.env`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Available scripts
 
-## What technologies are used for this project?
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server at http://localhost:5173 |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run component tests (Vitest, single run) |
+| `npm run test:watch` | Run component tests in watch mode |
+| `npm run test:coverage` | Run component tests with coverage report |
+| `npm run test:edge` | Run edge function unit tests (requires Deno) |
+| `npm run test:e2e` | Run Stripe integration tests against test API (requires Deno + test key) |
 
-This project is built with:
+## Testing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Component tests
 
-## How can I deploy this project?
+Uses Vitest + React Testing Library. No external services needed.
 
-Simply open [Lovable](https://lovable.dev/projects/a2f0f482-db28-494e-a3e0-4c2abadfc492) and click on Share -> Publish.
+```sh
+npm test
+```
 
-## Can I connect a custom domain to my Lovable project?
+Tests live in `src/components/__tests__/`. Currently covers:
+- `PricingSection` — rendering, happy paths, loading state, error handling
 
-Yes, you can!
+### Edge function unit tests
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Mocks the Stripe client — no network calls, no API key needed.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```sh
+npm run test:edge
+```
+
+### Stripe E2E integration tests
+
+Hits the real Stripe test API. Creates actual checkout sessions (no charges in test mode).
+
+```sh
+STRIPE_SECRET_KEY=sk_test_... npm run test:e2e
+```
+
+Requires a **test mode** key (`sk_test_...`). The suite will refuse to run with a live key.
+Sessions created can be inspected at https://dashboard.stripe.com/test/checkout/sessions.
+
+## Supabase edge functions
+
+### Deploy
+
+```sh
+# Deploy a single function
+supabase functions deploy create-checkout --project-ref gqporfhogzyqgsxincbx
+supabase functions deploy stripe-webhook --project-ref gqporfhogzyqgsxincbx
+```
+
+### Set secrets
+
+```sh
+supabase secrets set STRIPE_SECRET_KEY=sk_test_... --project-ref gqporfhogzyqgsxincbx
+supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_... --project-ref gqporfhogzyqgsxincbx
+```
+
+### Functions
+
+| Function | Auth | Description |
+|---|---|---|
+| `create-checkout` | None | Creates a Stripe Checkout session for the chosen founding member plan |
+| `stripe-webhook` | Stripe signature | Handles `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted` — writes to `preorders` table |
+
+## Going to production (test → live keys)
+
+### 1. Create live webhook in Stripe Dashboard
+
+Go to **Developers → Webhooks → Add endpoint** and configure:
+
+- **URL:** `https://gqporfhogzyqgsxincbx.supabase.co/functions/v1/stripe-webhook`
+- **Events to listen for:**
+  - `checkout.session.completed`
+  - `customer.subscription.updated`
+  - `customer.subscription.deleted`
+
+Copy the `whsec_` signing secret shown after creation — you'll need it in step 3.
+
+### 2. Recreate the 3 plans in live mode
+
+The price IDs in `supabase/functions/create-checkout/index.ts` (`FOUNDING_PRICES`) are test-mode prices and won't work in live mode. In the Stripe Dashboard, switch to **Live mode** and recreate the Silver, Gold, and Annual subscription prices. Then update the file:
+
+```ts
+// supabase/functions/create-checkout/index.ts
+export const FOUNDING_PRICES: Record<string, { priceId: string; name: string }> = {
+  silver: { priceId: "price_live_SILVER_ID", name: "Silver Founding Member" },
+  gold:   { priceId: "price_live_GOLD_ID",   name: "Gold Founding Member"   },
+  annual: { priceId: "price_live_ANNUAL_ID", name: "Annual Founding Member" },
+};
+```
+
+### 3. Swap secrets and redeploy
+
+```sh
+supabase secrets set \
+  STRIPE_SECRET_KEY=sk_live_YOUR_KEY_HERE \
+  STRIPE_WEBHOOK_SECRET=whsec_YOUR_PROD_SECRET_HERE \
+  --project-ref gqporfhogzyqgsxincbx
+
+supabase functions deploy create-checkout --project-ref gqporfhogzyqgsxincbx
+supabase functions deploy stripe-webhook --project-ref gqporfhogzyqgsxincbx
+```
+
+> **Note:** The `VITE_SUPABASE_PUBLISHABLE_KEY` in `.env` must be the **legacy anon JWT key** (starts with `eyJ`), not the `sb_publishable_` format key. The edge function gateway requires a valid JWT for authorization.
+
+## Deployment
+
+The frontend is a static Vite build — deploy `dist/` to any static host (Vercel, Netlify, etc.).
+
+```sh
+npm run build
+# deploy dist/ to your host
+```

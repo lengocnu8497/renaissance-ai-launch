@@ -79,39 +79,55 @@ export const Hero = () => {
           Your AI concierge for cosmetic care — personalized, trusted, effortless.
         </motion.p>
 
-        <motion.form
+        {/* Primary CTA */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
-          onSubmit={handleSubmit}
-          className="flex flex-col sm:flex-row gap-3 max-w-md"
+          className="flex flex-col sm:flex-row items-start gap-4 mb-6"
         >
-          <input
-            type="email"
-            placeholder="your@email.com"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            disabled={isSubmitting}
-            className="flex-1 bg-cream/10 backdrop-blur-sm border border-cream/30 text-cream placeholder:text-cream/40 rounded-full px-5 py-3 text-[14px] font-light outline-none focus:border-cream/60 transition-colors"
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-dusty-rose text-cream rounded-full px-7 py-3 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:bg-rose-gold disabled:opacity-60 whitespace-nowrap"
+          <a
+            href="#pricing"
+            className="bg-dusty-rose text-cream rounded-full px-8 py-3.5 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:bg-rose-gold whitespace-nowrap"
           >
-            {isSubmitting ? "Joining..." : "Join Waitlist"}
-          </button>
-        </motion.form>
+            Become a Founding Member
+          </a>
+        </motion.div>
 
-        <motion.p
+        {/* Waitlist fallback */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-cream/50 mt-4 font-light"
-          style={{ fontSize: "15px", letterSpacing: "0.5px" }}
+          transition={{ duration: 0.8, delay: 0.95 }}
+          className="flex flex-col gap-2"
         >
-          No algorithms. Every recommendation is built for you, specifically.
-        </motion.p>
+          <p
+            className="text-cream/40 font-sans font-light"
+            style={{ fontSize: "12px", letterSpacing: "0.5px" }}
+          >
+            Can't commit yet?
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-2 max-w-sm"
+          >
+            <input
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              disabled={isSubmitting}
+              className="flex-1 bg-cream/10 backdrop-blur-sm border border-cream/20 text-cream placeholder:text-cream/30 rounded-full px-5 py-2.5 text-[13px] font-light outline-none focus:border-cream/50 transition-colors"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="border border-cream/25 text-cream/60 rounded-full px-5 py-2.5 text-[10px] font-medium uppercase tracking-[2.5px] transition-all duration-200 hover:border-cream/50 hover:text-cream/80 disabled:opacity-60 whitespace-nowrap"
+            >
+              {isSubmitting ? "Joining..." : "Join Waitlist"}
+            </button>
+          </form>
+        </motion.div>
 
       </div>
 

@@ -75,7 +75,7 @@ export const Navbar = () => {
         </div>
 
         <a
-          href="#waitlist"
+          href="#pricing"
           className="text-[11px] font-medium uppercase tracking-[3px] px-6 py-2.5 rounded-full border transition-all duration-300"
           style={{
             color: scrolled ? "#3D2B2E" : "#FFF8F6",
@@ -92,7 +92,7 @@ export const Navbar = () => {
             el.style.color = scrolled ? "#3D2B2E" : "#FFF8F6";
           }}
         >
-          Join Waitlist
+          Become a Founding Member
         </a>
       </div>
     </nav>
