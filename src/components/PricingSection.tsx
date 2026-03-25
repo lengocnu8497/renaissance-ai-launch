@@ -125,7 +125,7 @@ export const PricingSection = () => {
           style={{ fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.7 }}
         >
           Limited to 500 founding members.
-          Lock in 20% off — forever.
+          Lock in 20% off.
         </p>
 
         {spotsRemaining !== null && spotsRemaining < 300 && (
