@@ -1,17 +1,17 @@
 import Stripe from "https://esm.sh/stripe@14?target=deno";
 
-// Founding member price IDs (20% off, trial until launch April 8 2026)
+// Founding member price IDs (20% off regular pricing)
 export const FOUNDING_PRICES: Record<string, { priceId: string; name: string }> = {
   silver: {
-    priceId: "price_1TEeyGAb6tzZd9brWCjPQnoz",
+    priceId: "price_1SnFIlAtvzpv2DPdcqWX6klA",
     name: "Silver Founding Member",
   },
   gold: {
-    priceId: "price_1TEeyGAb6tzZd9brsvGngIpT",
+    priceId: "price_1SnFL3Atvzpv2DPdi6JtBemz",
     name: "Gold Founding Member",
   },
   annual: {
-    priceId: "price_1TEeyHAb6tzZd9brJaa2mTT4",
+    priceId: "price_1TFk2vAtvzpv2DPdlVDt2ibd",
     name: "Annual Founding Member",
   },
 };
@@ -50,6 +50,7 @@ export function createHandler(stripe: Stripe) {
         payment_method_types: ["card"],
         payment_method_collection: "always",
         line_items: [{ price: planConfig.priceId, quantity: 1 }],
+        discounts: [{ coupon: "Q4YW1fQL" }],
         subscription_data: {
           metadata: {
             plan: planKey,
