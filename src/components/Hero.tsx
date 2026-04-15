@@ -90,7 +90,7 @@ export const Hero = () => {
             href="#pricing"
             className="bg-dusty-rose text-cream rounded-full px-8 py-3.5 text-[11px] font-medium uppercase tracking-[3px] transition-all duration-200 hover:bg-rose-gold whitespace-nowrap"
           >
-            Become a Founding Member
+            Become a Member
           </a>
         </motion.div>
 

@@ -92,7 +92,7 @@ export const Navbar = () => {
             el.style.color = scrolled ? "#3D2B2E" : "#FFF8F6";
           }}
         >
-          Become a Founding Member
+          Become a Member
         </a>
       </div>
     </nav>

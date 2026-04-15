@@ -23,6 +23,14 @@ export const Footer = () => {
         </Link>
         <span style={{ width: "1px", height: "12px", backgroundColor: "rgba(255,248,246,0.2)", display: "inline-block" }} />
         <Link
+          to="/support"
+          className="font-sans font-light transition-opacity hover:opacity-70"
+          style={{ fontSize: "12px", color: "rgba(255,248,246,0.45)", letterSpacing: "1px" }}
+        >
+          Support
+        </Link>
+        <span style={{ width: "1px", height: "12px", backgroundColor: "rgba(255,248,246,0.2)", display: "inline-block" }} />
+        <Link
           to="/terms-of-service"
           className="font-sans font-light transition-opacity hover:opacity-70"
           style={{ fontSize: "12px", color: "rgba(255,248,246,0.45)", letterSpacing: "1px" }}
@@ -35,7 +43,7 @@ export const Footer = () => {
         className="font-sans font-light text-center"
         style={{ fontSize: "12px", color: "rgba(255,248,246,0.25)", letterSpacing: "1px" }}
       >
-        © 2026 Rena Aesthetic Lab. All rights reserved.
+        © 2026 Rena LLC. All rights reserved.
       </p>
     </footer>
   );
