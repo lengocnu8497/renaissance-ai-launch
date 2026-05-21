@@ -4,44 +4,49 @@
 
 @layer base {
   :root {
-    --background: 15 100% 98%;        /* Cream #FFF8F6 */
-    --foreground: 350 17% 20%;        /* Charcoal Rose #3D2B2E */
+    --background: 240 98% 99%;        /* #FAFAFF App BG */
+    --foreground: 244 47% 20%;        /* #1E1B4B Deep Violet */
 
     --card: 0 0% 100%;
-    --card-foreground: 350 17% 20%;
+    --card-foreground: 244 47% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 350 17% 20%;
+    --popover-foreground: 244 47% 20%;
 
-    --primary: 349 26% 58%;           /* Dusty Rose #C4929A */
-    --primary-foreground: 15 100% 98%;
+    --primary: 243 100% 69%;          /* #6C63FF Violet */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 345 30% 42%;         /* Mauve Berry #8E4C5C */
-    --secondary-foreground: 15 100% 98%;
+    --secondary: 246 79% 72%;         /* #8B7FF0 Medium Violet */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 352 43% 91%;             /* Soft Blush #F2D7DB */
-    --muted-foreground: 345 8% 69%;   /* Warm Gray #B8A9AB */
+    --muted: 248 100% 95%;            /* #EAE7FF Pale Lavender */
+    --muted-foreground: 249 39% 59%;  /* #7B6FC0 Muted Violet */
 
-    --accent: 347 33% 57%;            /* Rose Gold #B76E79 */
-    --accent-foreground: 15 100% 98%;
+    --accent: 248 100% 95%;           /* #EAE7FF Pale Lavender */
+    --accent-foreground: 243 100% 69%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 352 30% 85%;
-    --input: 352 30% 85%;
-    --ring: 349 26% 58%;
+    --border: 240 100% 97%;           /* #EEEEFF */
+    --input: 240 100% 97%;
+    --ring: 243 100% 69%;
 
     --radius: 1.25rem;
 
-    --gradient-hero: linear-gradient(160deg, rgba(61,43,46,0.6) 0%, rgba(61,43,46,0.15) 50%, rgba(61,43,46,0.55) 100%);
-    --gradient-subtle: linear-gradient(180deg, #FFF8F6 0%, #F2D7DB 100%);
-    --gradient-accent: linear-gradient(135deg, #C4929A 0%, #8E4C5C 100%);
+    --gradient-hero: linear-gradient(160deg, rgba(11,11,24,0.7) 0%, rgba(30,27,75,0.3) 50%, rgba(11,11,24,0.65) 100%);
+    --gradient-subtle: linear-gradient(180deg, #FAFAFF 0%, #EAE7FF 100%);
+    --gradient-accent: linear-gradient(135deg, #6C63FF 0%, #8B7FF0 100%);
 
-    --shadow-elegant: 0 2px 20px -4px rgba(61,43,46,0.08);
-    --shadow-glow: 0 0 40px rgba(196,146,154,0.15);
+    --shadow-elegant: 0 2px 20px -4px rgba(108,99,255,0.10);
+    --shadow-glow: 0 0 40px rgba(108,99,255,0.18);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ── Custom easing curves (Emil) ── */
+    --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   }
 
   * {
@@ -49,10 +54,10 @@
   }
 
   body {
-    font-family: 'Outfit', system-ui, sans-serif;
-    background-color: #FFF8F6;
-    color: #3D2B2E;
-    font-weight: 300;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: #fcf8ff;
+    color: #1b1b24;
+    font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -61,7 +66,7 @@
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -75,10 +80,10 @@
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
+    animation: fade-in-up 0.5s var(--ease-out) forwards;
   }
 
   .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+    animation: fade-in 0.4s var(--ease-out) forwards;
   }
 }
