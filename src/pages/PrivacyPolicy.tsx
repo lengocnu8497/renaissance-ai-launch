@@ -42,11 +42,11 @@ export default function PrivacyPolicy() {
             <SubHeading>Personal Information</SubHeading>
             <Body>We may collect personal information that you provide directly to us, including your name, email address, profile information, and any other information you choose to provide when using our App.</Body>
             <SubHeading>Photos and Images</SubHeading>
-            <Body>Our App may request access to your device camera and photo library to provide personalized recovery tracking. Images you upload are processed to support your post-procedure journey.</Body>
+            <Body>Our App may request access to your device camera and photo library to provide personalized recovery tracking. Photos you upload for recovery analysis may be transmitted to Google Gemini Vision (a Google AI service) for image processing. These images are used solely to analyze your recovery progress and are not used for any other purpose.</Body>
             <SubHeading>Usage Data</SubHeading>
             <Body>We automatically collect certain information about your device and how you interact with our App, including device type, operating system, unique device identifiers, IP address, app features accessed, and usage patterns.</Body>
             <SubHeading>AI Interaction Data</SubHeading>
-            <Body>We collect information about your interactions with our AI-powered features, including queries, symptoms logged, recovery milestones, and guidance received.</Body>
+            <Body>We collect information about your interactions with our AI-powered features, including queries, symptoms logged, recovery milestones, and guidance received. To generate AI responses, your message text, conversation history, and any profile information you have provided are transmitted to OpenAI for processing. See Section 3 for details on our AI service providers.</Body>
           </Section>
 
           <Section number="2" title="How We Use Your Information">
@@ -63,8 +63,18 @@ export default function PrivacyPolicy() {
 
           <Section number="3" title="How We Share Your Information">
             <Body>We do not sell your personal information. We may share your information in the following circumstances:</Body>
-            <SubHeading>Service Providers</SubHeading>
-            <Body>We may share information with third-party service providers who perform services on our behalf, such as cloud hosting, AI processing, analytics, and customer support.</Body>
+            <SubHeading>OpenAI — AI Chat Processing</SubHeading>
+            <Body>
+              Your message text, conversation history, and any profile information you have provided are sent to OpenAI for processing by their GPT-4o model to generate AI-powered recovery guidance. OpenAI acts as a data processor on our behalf and is bound by contractual obligations to protect your data. You can review OpenAI's privacy practices at{" "}
+              <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#3e2cdc] underline underline-offset-2">openai.com/policies/privacy-policy</a>.
+            </Body>
+            <SubHeading>Google — Recovery Photo Analysis</SubHeading>
+            <Body>
+              Photos you upload for recovery tracking may be transmitted to Google's Gemini Vision API for image analysis. These photos are processed solely to support your recovery progress analysis and are not used for any other purpose. You can review Google's privacy practices at{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#3e2cdc] underline underline-offset-2">policies.google.com/privacy</a>.
+            </Body>
+            <SubHeading>Other Service Providers</SubHeading>
+            <Body>We may share information with additional third-party service providers who perform services on our behalf, such as cloud hosting, analytics, and customer support. These providers are contractually obligated to protect your information and may only use it for the specific services they provide to us.</Body>
             <SubHeading>Business Transfers</SubHeading>
             <Body>If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</Body>
             <SubHeading>Legal Requirements</SubHeading>
